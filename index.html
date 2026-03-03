@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tino Stanicic – CV</title>
+<title>Tino Stanicic - CV</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -61,17 +61,17 @@
     display: grid;
     grid-template-columns: var(--col-label) 1fr;
     gap: 0 var(--col-gap);
-    padding: 36px 0;
+    padding: 20px 0;
   }
-  .row-tight { padding: 24px 0; }
-  .row-full { padding: 36px 0; }
-  .label { padding-top: 2px; }
+  .row-tight { padding: 16px 0; }
+  .row-full { padding: 20px 0; }
+  .label { padding-top: 2px; position: sticky; top: 20px; align-self: start; }
 
-  .header { padding: 0 0 24px 0; }
-  .header-meta { font-size: 0.8rem; color: var(--mid); margin-top: 6px; letter-spacing: 0.01em; }
+  .header { padding: 0 0 16px 0; }
+  .header-meta { font-size: 0.8rem; color: var(--mid); margin-top: 4px; letter-spacing: 0.01em; }
   .header-meta span { color: var(--hairline); margin: 0 6px; }
 
-  .objective { font-size: 0.93rem; line-height: 1.7; color: var(--dark); max-width: 680px; }
+  .objective { font-size: 0.93rem; line-height: 1.7; color: var(--dark); }
 
   table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
   thead th { text-align: left; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); padding: 0 10px 8px 0; border-bottom: 2px solid var(--black); }
@@ -82,7 +82,7 @@
 
   ul { list-style: none; padding: 0; }
   ul li { position: relative; padding-left: 14px; margin-bottom: 7px; font-size: 0.84rem; line-height: 1.6; color: var(--dark); }
-  ul li::before { content: '–'; position: absolute; left: 0; color: var(--light); font-weight: 400; }
+  ul li::before { content: '-'; position: absolute; left: 0; color: var(--light); font-weight: 400; }
 
   .metrics { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--hairline); }
   .metric { background: var(--bg); padding: 18px 14px; }
@@ -99,7 +99,7 @@
   .cert-group { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 6px; margin-top: 16px; }
   .cert-group:first-child { margin-top: 0; }
   .certs li { font-size: 0.82rem; margin-bottom: 3px; }
-  .certs li::before { content: '–'; }
+  .certs li::before { content: '-'; }
   .cert-sub { color: var(--light); font-size: 0.78rem; }
 
   .exp-company { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; }
@@ -117,10 +117,40 @@
   .edu-meta { font-size: 0.78rem; color: var(--mid); }
 
   @media print {
-    body { padding: 16px 24px; font-size: 12px; }
-    .metrics { grid-template-columns: repeat(5, 1fr); }
-    .row { padding: 24px 0; }
+    @page { size: A4; margin: 12mm; }
+    body { padding: 0; font-size: 11px; max-width: none; }
+
+    /* Compact the grid to fit A4 while keeping two-column layout */
+    .row { grid-template-columns: 120px 1fr !important; gap: 0 20px !important; padding: 12px 0; }
+    .label { position: static; font-size: 0.6rem; }
+    .metrics { grid-template-columns: repeat(5, 1fr) !important; gap: 1px !important; }
+    .metric { padding: 8px 8px; }
+    .t-metric { font-size: 1.2rem; }
+    .metric-label { font-size: 0.5rem; margin-top: 2px; }
     .quotes { grid-template-columns: 1fr; }
+    .tbl-partner td:first-child { width: 140px; }
+    .t-hero { font-size: 1.6rem; margin-bottom: 4px; }
+    .header-meta { font-size: 0.7rem; margin-top: 2px; }
+    .objective { font-size: 0.8rem; line-height: 1.5; }
+    hr.rule-heavy { margin: 0; }
+    hr.rule-mid { margin: 0; }
+    hr.rule-hair { margin: 0; }
+
+    /* Let content flow naturally across pages */
+    .row { break-inside: auto; }
+    .header { break-inside: auto; }
+    hr { break-after: auto; }
+
+    /* Only protect small atomic blocks from splitting mid-way */
+    blockquote { break-inside: avoid; }
+    .exp-block { break-inside: avoid; }
+
+    /* Keep headings with their content */
+    .t-sub { break-after: avoid; }
+    .exp-role { break-after: avoid; }
+    .exp-company { break-after: avoid; }
+
+    p { orphans: 2; widows: 2; }
   }
 
   @media (max-width: 720px) {
@@ -149,126 +179,7 @@
 
 <!-- ════════ OBJECTIVE ════════ -->
 <div class="row-full">
-  <p class="objective">Curious learn-it-all with a hacker's instinct for going deep — 30+ years building software, 17+ in professional engineering. I see the technical bet others aren't making yet, go hands-on to prove it works, then bring clarity and energy to make it real at scale. Passionate about exploring the intersection of data, AI, and large-scale systems — driven by the same curiosity that had me building production platforms as a teenager and pioneering GPT-3 integration at Microsoft before it was obvious. I earn influence through architectural depth and technical credibility, not organizational authority.</p>
-</div>
-
-<hr class="rule-heavy">
-
-<!-- ════════ WHAT DRIVES ME ════════ -->
-<div class="row">
-  <div class="label t-section">What<br>Drives Me</div>
-  <div class="t-body">
-    <p>I start from first principles, go hands-on to prove the path works, and operate at the <strong>intersection of research and production</strong> — close enough to the frontier to see what's coming, deep enough in the system to ship it. I believe data can make a real difference for society, and I'm at my best when that belief meets a hard problem.</p>
-    <p style="margin-top: 14px;">Currently hacking on two converging interests: <strong>ambient intelligence</strong> that works without being prompted, and <strong>large-scale geospatial data analysis</strong> — understanding multidimensional patterns across physical space. The challenge I'm chasing: making both so simple that anyone can pick them up and they just work — no heavy infrastructure, no platform, no app. Just the solution.</p>
-  </div>
-</div>
-
-<hr class="rule-mid">
-
-<!-- ════════ PROFILE ════════ -->
-<div class="row row-tight">
-  <div class="label t-section">Profile</div>
-  <div class="t-body">
-    <p>At Microsoft (7+ years), I set technical direction across multiple teams and organizations, architecting platforms processing <strong>billions of events/month</strong> across <strong>thousands of tenants</strong>, driving <strong>multi-million dollar annual cost savings</strong> through strategic technical decisions, and building sustained partnerships across Microsoft Fabric, Azure Data, Azure AI, and Power Platform teams. Deeply invested in AI/ML with professional certifications in Artificial Intelligence, Machine Learning, and Data Science.</p>
-  </div>
-</div>
-
-<hr class="rule-heavy">
-
-<!-- ════════ STRATEGIC BETS ════════ -->
-<div class="row">
-  <div class="label t-section">Technical<br>Vision &amp;<br>Strategic Bets</div>
-  <div>
-    <p class="t-small" style="margin-bottom: 16px;">The impact I deliver comes from seeing the right technical direction before it's consensus, then building the coalitions to make it happen.</p>
-    <table>
-      <thead><tr><th>Strategic Bet</th><th>When Others Were…</th><th>Outcome</th></tr></thead>
-      <tbody>
-        <tr><td>Co-developed a Delta Lake writer library with Microsoft's Azure Data team</td><td>Using expensive Synapse/Spark copy pipelines</td><td>Billions of events written at minimal cost; Microsoft Healthcare and Industry Clouds took dependency; became the foundation for a unified analytics storage platform</td></tr>
-        <tr><td>Pioneered Apache Spark on Kubernetes as first pilot team</td><td>Using traditional compute allocations</td><td><strong>20x infrastructure cost reduction</strong> — pattern adopted more broadly across the organization</td></tr>
-        <tr><td>Led GPT-3 product integration (AI-powered email content)</td><td>Waiting for AI platform maturity</td><td>One of <strong>Microsoft's first GPT-3 product integrations</strong>; reached large-scale end customer adoption; praised as "main delighter feature"</td></tr>
-        <tr><td>Built a replacement asset management system in 2 months</td><td>Debating whether to keep an expensive third-party CMS dependency</td><td><strong>Significant annual cost recovery</strong>; unblocked geographic expansion; replaced a dependency others argued to keep for years</td></tr>
-        <tr><td>Pushed for compute SKU migration on telemetry platform</td><td>Accepting existing compute costs</td><td><strong>4x cost reduction</strong>; established a replicable pattern across platform consumers</td></tr>
-        <tr><td>Root-caused Apache Spark bug in Azure Data Lake Storage</td><td>Working around the symptoms</td><td><strong>Major annual savings</strong> across the organization; required collaboration across four Azure platform teams</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<hr class="rule-mid">
-
-<!-- ════════ CROSS-ORG INFLUENCE ════════ -->
-<div class="row">
-  <div class="label t-section">Cross-Org<br>Technical<br>Influence</div>
-  <div>
-    <p class="t-small" style="margin-bottom: 16px;">I earn trust and drive alignment across organizational boundaries through technical credibility, not positional authority. These are sustained partnerships built over multiple years of shared delivery.</p>
-    <table class="tbl-partner">
-      <thead><tr><th>Partner Organization</th><th>Nature of Technical Partnership</th></tr></thead>
-      <tbody>
-        <tr><td>Microsoft Fabric</td><td>Co-developed Delta Lake writer library; established data export and big data query architecture</td></tr>
-        <tr><td>Azure Data</td><td>Root-caused critical Spark bug jointly with Azure Core and Azure Data teams; pioneered Spark-on-Kubernetes</td></tr>
-        <tr><td>Azure AI / OpenAI</td><td>Pioneered retrieval-augmented generation (RAG) and evaluation (Eval) approaches with science teams from Azure OpenAI and Power Platform AI Builder for GPT-3 features</td></tr>
-        <tr><td>Telemetry Platform</td><td>Multi-year technical partner; drove compute cost savings; led cross-org architecture alignment; achieved 20x latency improvement</td></tr>
-        <tr><td>Power Platform</td><td>Drove platform-wide security and performance improvements; established collaboration with Power BI and Common Data Model teams</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<hr class="rule-heavy">
-
-<!-- ════════ IMPACT BY DOMAIN ════════ -->
-<div class="row">
-  <div class="label t-section">Impact<br>by Domain</div>
-  <div>
-
-    <div class="t-sub" style="margin-bottom: 12px;">Cost Efficiency at Scale</div>
-    <table class="tbl-cost">
-      <thead><tr><th>Initiative</th><th>Impact</th><th>How</th></tr></thead>
-      <tbody>
-        <tr><td>Root-caused Apache Spark bug in Azure Data Lake Storage</td><td><strong>Major annual savings</strong></td><td>Collaborated across four Azure platform teams to find and fix root cause</td></tr>
-        <tr><td>Telemetry platform compute SKU migration</td><td><strong>4x cost reduction</strong></td><td>Identified opportunity, drove compute migration across the platform</td></tr>
-        <tr><td>CosmosDB optimization &amp; replica reduction</td><td><strong>Significant savings</strong></td><td>Optimized usage patterns, eliminated redundancies</td></tr>
-        <tr><td>Legacy analytics flow deprecation</td><td><strong>Cost recovery</strong></td><td>Architected and executed deprecation path</td></tr>
-        <tr><td>Third-party CMS replacement</td><td><strong>Significant annual savings</strong></td><td>Built replacement in 2 months at near-zero cost</td></tr>
-        <tr><td>Spark on Kubernetes pilot</td><td><strong>20x</strong></td><td>First pilot team, unlocked compute efficiency pattern</td></tr>
-      </tbody>
-    </table>
-
-    <hr class="rule-hair" style="margin: 24px 0;">
-
-    <div class="t-sub" style="margin-bottom: 10px;">Architecture, Reliability &amp; Scale</div>
-    <ul>
-      <li>Designed <strong>multi-tenant analytics platform</strong> processing <strong>billions of events</strong> across <strong>thousands of organizations</strong> monthly</li>
-      <li>Architected <strong>zero-downtime data migration</strong> across data centers (hundreds of terabytes backfilled)</li>
-      <li>Achieved <strong>99.98% reliability</strong> on aggregated analytics, significantly improving on predecessor service</li>
-      <li>Delivered <strong>10x throughput</strong> via parallel processing architecture for a high-volume messaging service</li>
-      <li>Improved query performance <strong>2,800x</strong> (15 min to 320ms) through data type migration and optimization</li>
-      <li><strong>6x incident reduction</strong> after taking over area with significant backlog; further <strong>3x reduction</strong> through systematic root cause elimination</li>
-      <li>Reduced incident response investment from <strong>majority of team capacity to ~20%</strong>, freeing engineers for strategic work</li>
-      <li><strong>Hundreds of enterprise organizations</strong> onboarded to Microsoft Fabric OneLake storage at GA with <strong>zero</strong> increase in incidents</li>
-    </ul>
-
-    <hr class="rule-hair" style="margin: 24px 0;">
-
-    <div class="t-sub" style="margin-bottom: 10px;">AI Infrastructure &amp; Enablement</div>
-    <ul>
-      <li>Led one of <strong>Microsoft's first GPT-3 product integrations</strong> end-to-end: architecture, data and evaluation pipelines, deployment — reaching large-scale end customer adoption</li>
-      <li>Pioneered <strong>RAG and evaluation approaches</strong> with science teams from Azure OpenAI and Power Platform AI Builder for GPT-3 features</li>
-      <li>Built <strong>AI feature adoption telemetry</strong> system consumed by senior leadership for Copilot metrics</li>
-      <li>Co-developed <strong>Delta Lake writer library</strong> with Azure Data team — enabling billions of events written at minimal cost</li>
-      <li>Pioneered <strong>Apache Spark on Kubernetes</strong> as first pilot project, demonstrating 20x cost reduction pattern</li>
-    </ul>
-
-    <hr class="rule-hair" style="margin: 24px 0;">
-
-    <div class="t-sub" style="margin-bottom: 10px;">Security, Privacy &amp; Compliance</div>
-    <ul>
-      <li>Drove <strong>platform-wide security and data isolation improvements</strong> across Microsoft's business data platform, impacting the entire platform and all Dynamics 365 applications</li>
-      <li>Strengthened <strong>data privacy posture</strong> by implementing redaction strategies in shared platform client libraries</li>
-      <li>Drove <strong>EU (EDPS) and US (USDP) data protection compliance</strong> across telemetry, monitoring, and data systems; zero missed security review deadlines</li>
-    </ul>
-
-  </div>
+  <p class="objective">Curious learn-it-all with a hacker's instinct for going deep - 30+ years building software, 17+ in professional engineering. I see the technical bet others aren't making yet, go hands-on to prove it works, then bring clarity and energy to make it real at scale. Passionate about exploring the intersection of data, AI, and large-scale systems - driven by the same curiosity that had me building production platforms as a teenager and pioneering GPT-3 integration at Microsoft before it was obvious. I earn influence through architectural depth and technical credibility, not organizational authority.</p>
 </div>
 
 <hr class="rule-heavy">
@@ -292,6 +203,125 @@
   </div>
 </div>
 
+<hr class="rule-heavy">
+
+<!-- ════════ WHAT DRIVES ME ════════ -->
+<div class="row">
+  <div class="label t-section">What<br>Drives Me</div>
+  <div class="t-body">
+    <p>I start from first principles, go hands-on to prove the path works, and operate at the <strong>intersection of research and production</strong> - close enough to the frontier to see what's coming, deep enough in the system to ship it. I believe data can make a real difference for society, and I'm at my best when that belief meets a hard problem.</p>
+    <p style="margin-top: 14px;">Currently hacking on two converging interests: <strong>ambient intelligence</strong> that works without being prompted, and <strong>large-scale geospatial data analysis</strong> - understanding multidimensional patterns across physical space. The challenge I'm chasing: making both so simple that anyone can pick them up and they just work - no heavy infrastructure, no platform, no app. Just the solution.</p>
+  </div>
+</div>
+
+<hr class="rule-mid">
+
+<!-- ════════ PROFILE ════════ -->
+<div class="row row-tight">
+  <div class="label t-section">Profile</div>
+  <div class="t-body">
+    <p>At Microsoft (7+ years), I set technical direction across multiple teams and organizations, architecting platforms processing <strong>billions of events/month</strong> across <strong>thousands of tenants</strong>, driving <strong>multi-million dollar annual cost savings</strong> through strategic technical decisions, and building sustained partnerships across Microsoft Fabric, Azure Data, Azure AI, and Power Platform teams. Deeply invested in AI/ML with professional certifications in Artificial Intelligence, Machine Learning, and Data Science.</p>
+  </div>
+</div>
+
+<hr class="rule-heavy">
+
+<!-- ════════ STRATEGIC BETS ════════ -->
+<div class="row">
+  <div class="label t-section">Technical<br>Vision &amp;<br>Strategic Bets</div>
+  <div>
+    <p class="t-small" style="margin-bottom: 8px;">The impact I deliver comes from seeing the right technical direction before it's consensus, then building the coalitions to make it happen.</p>
+    <table>
+      <thead><tr><th>Strategic Bet</th><th>When Others Were…</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>Co-developed a Delta Lake writer library with Microsoft's Azure Data team</td><td>Using expensive Synapse/Spark copy pipelines</td><td>Billions of events written at minimal cost; Microsoft Healthcare and Industry Clouds took dependency; became the foundation for a unified analytics storage platform</td></tr>
+        <tr><td>Pioneered Apache Spark on Kubernetes as first pilot team</td><td>Using traditional compute allocations</td><td><strong>20x infrastructure cost reduction</strong> - pattern adopted more broadly across the organization</td></tr>
+        <tr><td>Led GPT-3 product integration (AI-powered email content)</td><td>Waiting for AI platform maturity</td><td>One of <strong>Microsoft's first GPT-3 product integrations</strong>; reached large-scale end customer adoption; praised as "main delighter feature"</td></tr>
+        <tr><td>Built a replacement asset management system in 2 months</td><td>Debating whether to keep an expensive third-party CMS dependency</td><td><strong>Significant annual cost recovery</strong>; unblocked geographic expansion; replaced a dependency others argued to keep for years</td></tr>
+        <tr><td>Pushed for compute SKU migration on telemetry platform</td><td>Accepting existing compute costs</td><td><strong>4x cost reduction</strong>; established a replicable pattern across platform consumers</td></tr>
+        <tr><td>Root-caused Apache Spark bug in Azure Data Lake Storage</td><td>Working around the symptoms</td><td><strong>Major annual savings</strong> across the organization; required collaboration across four Azure platform teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="rule-mid">
+
+<!-- ════════ CROSS-ORG INFLUENCE ════════ -->
+<div class="row">
+  <div class="label t-section">Cross-Org<br>Technical<br>Influence</div>
+  <div>
+    <p class="t-small" style="margin-bottom: 8px;">I earn trust and drive alignment across organizational boundaries through technical credibility, not positional authority. These are sustained partnerships built over multiple years of shared delivery.</p>
+    <table class="tbl-partner">
+      <thead><tr><th>Partner Organization</th><th>Nature of Technical Partnership</th></tr></thead>
+      <tbody>
+        <tr><td>Microsoft Fabric</td><td>Co-developed Delta Lake writer library; established data export and big data query architecture</td></tr>
+        <tr><td>Azure Data</td><td>Root-caused critical Spark bug jointly with Azure Core and Azure Data teams; pioneered Spark-on-Kubernetes</td></tr>
+        <tr><td>Azure AI / OpenAI</td><td>Pioneered retrieval-augmented generation (RAG) and evaluation (Eval) approaches with science teams from Azure OpenAI and Power Platform AI Builder for GPT-3 features</td></tr>
+        <tr><td>Telemetry Platform</td><td>Multi-year technical partner; drove compute cost savings; led cross-org architecture alignment; achieved 20x latency improvement</td></tr>
+        <tr><td>Power Platform</td><td>Drove platform-wide security and performance improvements; established collaboration with Power BI and Common Data Model teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<hr class="rule-heavy">
+
+<!-- ════════ IMPACT BY DOMAIN ════════ -->
+<div class="row">
+  <div class="label t-section">Impact<br>by Domain</div>
+  <div>
+
+    <div class="t-sub" style="margin-bottom: 8px;">Cost Efficiency at Scale</div>
+    <table class="tbl-cost">
+      <thead><tr><th>Initiative</th><th>Impact</th><th>How</th></tr></thead>
+      <tbody>
+        <tr><td>Root-caused Apache Spark bug in Azure Data Lake Storage</td><td><strong>Major annual savings</strong></td><td>Collaborated across four Azure platform teams to find and fix root cause</td></tr>
+        <tr><td>Telemetry platform compute SKU migration</td><td><strong>4x cost reduction</strong></td><td>Identified opportunity, drove compute migration across the platform</td></tr>
+        <tr><td>CosmosDB optimization &amp; replica reduction</td><td><strong>Significant savings</strong></td><td>Optimized usage patterns, eliminated redundancies</td></tr>
+        <tr><td>Legacy analytics flow deprecation</td><td><strong>Cost recovery</strong></td><td>Architected and executed deprecation path</td></tr>
+        <tr><td>Third-party CMS replacement</td><td><strong>Significant annual savings</strong></td><td>Built replacement in 2 months at near-zero cost</td></tr>
+        <tr><td>Spark on Kubernetes pilot</td><td><strong>20x</strong></td><td>First pilot team, unlocked compute efficiency pattern</td></tr>
+      </tbody>
+    </table>
+
+    <hr class="rule-hair" style="margin: 14px 0;">
+
+    <div class="t-sub" style="margin-bottom: 8px;">Architecture, Reliability &amp; Scale</div>
+    <ul>
+      <li>Designed <strong>multi-tenant analytics platform</strong> processing <strong>billions of events</strong> across <strong>thousands of organizations</strong> monthly</li>
+      <li>Architected <strong>zero-downtime data migration</strong> across data centers (hundreds of terabytes backfilled)</li>
+      <li>Achieved <strong>99.98% reliability</strong> on aggregated analytics, significantly improving on predecessor service</li>
+      <li>Delivered <strong>10x throughput</strong> via parallel processing architecture for a high-volume messaging service</li>
+      <li>Improved query performance <strong>2,800x</strong> (15 min to 320ms) through data type migration and optimization</li>
+      <li><strong>6x incident reduction</strong> after taking over area with significant backlog; further <strong>3x reduction</strong> through systematic root cause elimination</li>
+      <li>Reduced incident response investment from <strong>majority of team capacity to ~20%</strong>, freeing engineers for strategic work</li>
+      <li><strong>Hundreds of enterprise organizations</strong> onboarded to Microsoft Fabric OneLake storage at GA with <strong>zero</strong> increase in incidents</li>
+    </ul>
+
+    <hr class="rule-hair" style="margin: 14px 0;">
+
+    <div class="t-sub" style="margin-bottom: 8px;">AI Infrastructure &amp; Enablement</div>
+    <ul>
+      <li>Led one of <strong>Microsoft's first GPT-3 product integrations</strong> end-to-end: architecture, data and evaluation pipelines, deployment - reaching large-scale end customer adoption</li>
+      <li>Pioneered <strong>RAG and evaluation approaches</strong> with science teams from Azure OpenAI and Power Platform AI Builder for GPT-3 features</li>
+      <li>Built <strong>AI feature adoption telemetry</strong> system consumed by senior leadership for Copilot metrics</li>
+      <li>Co-developed <strong>Delta Lake writer library</strong> with Azure Data team - enabling billions of events written at minimal cost</li>
+      <li>Pioneered <strong>Apache Spark on Kubernetes</strong> as first pilot project, demonstrating 20x cost reduction pattern</li>
+    </ul>
+
+    <hr class="rule-hair" style="margin: 14px 0;">
+
+    <div class="t-sub" style="margin-bottom: 8px;">Security, Privacy &amp; Compliance</div>
+    <ul>
+      <li>Drove <strong>platform-wide security and data isolation improvements</strong> across Microsoft's business data platform, impacting the entire platform and all Dynamics 365 applications</li>
+      <li>Strengthened <strong>data privacy posture</strong> by implementing redaction strategies in shared platform client libraries</li>
+      <li>Drove <strong>EU (EDPS) and US (USDP) data protection compliance</strong> across telemetry, monitoring, and data systems; zero missed security review deadlines</li>
+    </ul>
+
+  </div>
+</div>
+
 <hr class="rule-mid">
 
 <!-- ════════ ENDORSEMENTS ════════ -->
@@ -301,9 +331,9 @@
     <div class="quotes">
       <blockquote>"His design was bulletproof… exceptional value to the team"</blockquote>
       <blockquote>"Outstanding impact… one of the first Microsoft integrations with GPT-3 service"</blockquote>
-      <blockquote class="wide">"You consistently operate with huge work capacity, are incredibly structured, and are self-driven — navigating complex, cross-org dependencies while seeking input when it adds value"</blockquote>
+      <blockquote class="wide">"You consistently operate with huge work capacity, are incredibly structured, and are self-driven - navigating complex, cross-org dependencies while seeking input when it adds value"</blockquote>
       <blockquote>"Significant reduction in customer incidents… I personally did not have any escalation reach me"</blockquote>
-      <blockquote>"You've grown significantly in influencing without authority — aligning disparate teams by framing technical changes as strategic business enablers"</blockquote>
+      <blockquote>"You've grown significantly in influencing without authority - aligning disparate teams by framing technical changes as strategic business enablers"</blockquote>
       <blockquote class="wide">"Became the main driver of the area… attention to details, ability to drive clarity and focus on quality"</blockquote>
     </div>
   </div>
@@ -336,7 +366,7 @@
       <div class="cert-group">AI &amp; Machine Learning</div>
       <ul class="certs">
         <li>Microsoft Professional Program: AI Certificate (2018)</li>
-        <li>Mathematics for ML – Imperial College London (2020) <span class="cert-sub">Linear Algebra | Calculus | PCA</span></li>
+        <li>Mathematics for ML - Imperial College London (2020) <span class="cert-sub">Linear Algebra | Calculus | PCA</span></li>
         <li>Deep Learning | Reinforcement Learning | Computer Vision</li>
         <li>Principles of ML | Essential Math for ML (Python)</li>
       </ul>
@@ -351,8 +381,8 @@
         <li>NoSQL Applications in Azure Cosmos DB</li>
       </ul>
       <div class="cert-group" style="margin-top: 20px;">Education</div>
-      <p class="edu"><strong>Bacc. Ing. Comp.</strong> — Applied / Business Computing</p>
-      <p class="edu-meta">University of Dubrovnik | 2005 – 2008</p>
+      <p class="edu"><strong>Bacc. Ing. Comp.</strong> - Applied / Business Computing</p>
+      <p class="edu-meta">University of Dubrovnik | 2005 - 2008</p>
     </div>
   </div>
 </div>
@@ -360,16 +390,16 @@
 <hr class="rule-heavy">
 
 <!-- ════════ DETAILED PROFESSIONAL EXPERIENCE ════════ -->
-<div class="row">
+<div class="row" style="break-before: page;">
   <div class="label t-section">Detailed<br>Professional<br>Experience</div>
   <div>
 
     <div class="exp-company">Microsoft</div>
-    <div class="exp-meta">Principal Software Engineer · April 2019 – Present · Prague, Czech Republic</div>
+    <div class="exp-meta">Principal Software Engineer · April 2019 - Present · Prague, Czech Republic</div>
 
     <div class="exp-block">
-      <div class="exp-role">M365 Core AI Experiences — Data Platform Team</div>
-      <div class="exp-role-meta">Jan 2025 – Present</div>
+      <div class="exp-role">M365 Core AI Experiences - Data Platform Team</div>
+      <div class="exp-role-meta">Jan 2025 - Present</div>
       <p class="exp-role-intro">Setting technical direction for a unified data platform serving Microsoft 365 AI experiences, shaping architecture across telemetry, scalability, data governance, and experimentation.</p>
 
       <div class="t-sub exp-sub">Architecture &amp; Platform Design</div>
@@ -380,7 +410,7 @@
 
       <div class="t-sub exp-sub">Experimentation Culture</div>
       <ul>
-        <li>Drove <strong>organization-wide shift to data-driven decision-making</strong> by establishing experimentation practice across multiple product areas; defined champion-led ownership model with validation gates — product teams now <strong>self-serving and running experiments autonomously</strong></li>
+        <li>Drove <strong>organization-wide shift to data-driven decision-making</strong> by establishing experimentation practice across multiple product areas; defined champion-led ownership model with validation gates - product teams now <strong>self-serving and running experiments autonomously</strong></li>
       </ul>
 
       <div class="t-sub exp-sub">Security &amp; Compliance Architecture</div>
@@ -395,14 +425,14 @@
     </div>
 
     <div class="exp-block">
-      <div class="exp-role">Dynamics 365 Customer Insights — Technical Lead, Analytics</div>
-      <div class="exp-role-meta">Jan 2023 – Dec 2024</div>
+      <div class="exp-role">Dynamics 365 Customer Insights - Technical Lead, Analytics</div>
+      <div class="exp-role-meta">Jan 2023 - Dec 2024</div>
       <p class="exp-role-intro">Took ownership of an analytics platform with significant reliability challenges and transformed it through architectural redesign into a high-performing, customer-trusted service at scale.</p>
 
       <div class="t-sub exp-sub">Platform Architecture</div>
       <ul>
         <li>Architected and shipped <strong>unified analytics storage</strong> on Delta Lake; designed multi-tenant data ingestion, processing, and storage pipelines handling <strong>billions of events/month</strong> across <strong>thousands of organizations</strong></li>
-        <li>Executed <strong>zero-downtime multi-datacenter data migration</strong> (hundreds of TB) — design described as "bulletproof" by management</li>
+        <li>Executed <strong>zero-downtime multi-datacenter data migration</strong> (hundreds of TB) - design described as "bulletproof" by management</li>
         <li>Identified and drove the <strong>Delta Lake writer library</strong> investment against the prevailing approach of expensive Synapse/Spark copy pipelines; Microsoft Healthcare and Industry Clouds took dependency on resulting infrastructure</li>
         <li>Shaped <strong>Microsoft Fabric custom reporting</strong> integration leveraging Delta Lake and OneLake; shipped to public preview with enterprise customers; positive Customer Advisory Board feedback</li>
       </ul>
@@ -428,19 +458,19 @@
     </div>
 
     <div class="exp-block">
-      <div class="exp-role">Dynamics 365 Marketing — Technical Lead, Shared Services</div>
-      <div class="exp-role-meta">2021 – 2022</div>
+      <div class="exp-role">Dynamics 365 Marketing - Technical Lead, Shared Services</div>
+      <div class="exp-role-meta">2021 - 2022</div>
       <p class="exp-role-intro">Set technical direction for platform infrastructure, delivering high-impact architecture decisions and AI integrations that defined the product's trajectory.</p>
 
       <div class="t-sub exp-sub">Architecture &amp; Performance</div>
       <ul>
         <li>Designed <strong>parallel processing architecture</strong> for a high-volume messaging service achieving <strong>10x throughput</strong>; eliminated entire class of performance incidents</li>
-        <li>Drove data type migration eliminating the most common source of query timeouts — yielding <strong>400% general</strong> and <strong>2,800x individual improvement</strong> (15 min to 320ms)</li>
+        <li>Drove data type migration eliminating the most common source of query timeouts - yielding <strong>400% general</strong> and <strong>2,800x individual improvement</strong> (15 min to 320ms)</li>
       </ul>
 
       <div class="t-sub exp-sub">AI &amp; Model Integration</div>
       <ul>
-        <li>Led <strong>GPT-3 AI-powered content generation</strong> — one of Microsoft's first GPT-3 product integrations — end-to-end; reached large-scale adoption; praised as "main delighter feature"</li>
+        <li>Led <strong>GPT-3 AI-powered content generation</strong> - one of Microsoft's first GPT-3 product integrations - end-to-end; reached large-scale adoption; praised as "main delighter feature"</li>
         <li>Architected <strong>natural language query feature</strong> to GA; designed model-compatible architecture using Microsoft's business data platform schema</li>
       </ul>
 
@@ -457,8 +487,8 @@
     </div>
 
     <div class="exp-block">
-      <div class="exp-role">Dynamics 365 Marketing — Software Engineer</div>
-      <div class="exp-role-meta">Apr 2019 – 2021</div>
+      <div class="exp-role">Dynamics 365 Marketing - Software Engineer</div>
+      <div class="exp-role-meta">Apr 2019 - 2021</div>
       <p class="exp-role-intro">Rapidly became core technical contributor and trusted advisor across the organization.</p>
       <ul>
         <li>Eliminated <strong>multiple orders of magnitude</strong> of monitoring noise through deep data analysis, transforming alerting from reactive noise to proactive signal</li>
@@ -477,32 +507,32 @@
   <div>
 
     <div class="exp-company">Rathmann d.o.o.</div>
-    <div class="exp-meta">Jul 2008 – Apr 2019 · 10 years 10 months · Dubrovnik, Croatia</div>
-    <p class="exp-context">Rathmann is an enterprise software company founded in 1992, building the proprietary F4B (Framework for Business) ERP platform — a multi-layered, modular system on the Microsoft stack. F4B serves 50+ organizations across 12+ industries on 1,000+ workstations with 30,000+ external system integrations. Featured in Microsoft's "Manufacturing and Resources Global Outlook" case study. My 11-year tenure spanned the full evolution of the Microsoft platform — from C#/.NET 1.0 with Visual SourceSafe and WinForms, through TFS, WPF/XAML, Silverlight, ASP.NET, and Windows Phone.</p>
+    <div class="exp-meta">Jul 2008 - Apr 2019 · 10 years 10 months · Dubrovnik, Croatia</div>
+    <p class="exp-context">Rathmann is an enterprise software company founded in 1992, building the proprietary F4B (Framework for Business) ERP platform - a multi-layered, modular system on the Microsoft stack. F4B serves 50+ organizations across 12+ industries on 1,000+ workstations with 30,000+ external system integrations. Featured in Microsoft's "Manufacturing and Resources Global Outlook" case study. My 11-year tenure spanned the full evolution of the Microsoft platform - from C#/.NET 1.0 with Visual SourceSafe and WinForms, through TFS, WPF/XAML, Silverlight, ASP.NET, and Windows Phone.</p>
 
     <div class="exp-block">
       <div class="exp-role">Head of Software Development</div>
-      <div class="exp-role-meta">Apr 2014 – Apr 2019</div>
-      <p class="exp-role-intro">Led the digital transformation of enterprise operations across 12+ industries — going hands-on into manual and paper-based workflows, designing digital solutions on top of the F4B platform, and always architecting for reuse across industries.</p>
+      <div class="exp-role-meta">Apr 2014 - Apr 2019</div>
+      <p class="exp-role-intro">Led the digital transformation of enterprise operations across 12+ industries - going hands-on into manual and paper-based workflows, designing digital solutions on top of the F4B platform, and always architecting for reuse across industries.</p>
       <ul>
         <li>Set <strong>long-term technical vision and platform roadmap</strong> for F4B's multi-layered architecture: data storage, data access, business rules engine, control matrix, and presentation layers</li>
-        <li>Designed and evolved F4B's <strong>modular plug-in component architecture</strong> with dynamic context-based adaptation — enabling runtime customization without code changes across diverse tenant configurations</li>
-        <li>Went hands-on into <strong>manual and paper-based business processes</strong> across maritime, construction, energy, healthcare, manufacturing, tourism, and transport — translating domain complexity into digital solutions built for cross-industry reuse</li>
+        <li>Designed and evolved F4B's <strong>modular plug-in component architecture</strong> with dynamic context-based adaptation - enabling runtime customization without code changes across diverse tenant configurations</li>
+        <li>Went hands-on into <strong>manual and paper-based business processes</strong> across maritime, construction, energy, healthcare, manufacturing, tourism, and transport - translating domain complexity into digital solutions built for cross-industry reuse</li>
         <li>Built and developed <strong>high-performing engineering teams</strong> across distributed offices (Dubrovnik, Zagreb, Rijeka, Zadar, Split)</li>
       </ul>
 
       <div class="t-sub exp-sub">Notable Projects</div>
       <ul>
         <li><strong>ACI Marinas dockmaster mobile solution:</strong> End-to-end mobile platform on handheld devices across <strong>22 marina locations</strong> (Croatia's largest chain). Later <strong>upscaled for government port authorities</strong></li>
-        <li><strong>Port of Rijeka shipping agent platform:</strong> End-to-end web solution for shipping agents at <strong>Croatia's largest cargo port</strong>, fully integrated with port warehousing — multi-party data flows across logistics, customs, and inventory</li>
+        <li><strong>Port of Rijeka shipping agent platform:</strong> End-to-end web solution for shipping agents at <strong>Croatia's largest cargo port</strong>, fully integrated with port warehousing - multi-party data flows across logistics, customs, and inventory</li>
       </ul>
     </div>
 
     <div class="exp-block">
       <div class="exp-role">Software Architect</div>
-      <div class="exp-role-meta">May 2011 – Apr 2014</div>
+      <div class="exp-role-meta">May 2011 - Apr 2014</div>
       <ul>
-        <li>Designed <strong>multi-layered service architecture</strong> for document lifecycle management — 150+ document formats</li>
+        <li>Designed <strong>multi-layered service architecture</strong> for document lifecycle management - 150+ document formats</li>
         <li>Made <strong>key technology selection and architecture decisions</strong> including WPF modernization</li>
         <li>Established <strong>development standards and reusable component frameworks</strong></li>
       </ul>
@@ -510,7 +540,7 @@
 
     <div class="exp-block">
       <div class="exp-role">Senior Software Development Engineer</div>
-      <div class="exp-role-meta">May 2010 – May 2011</div>
+      <div class="exp-role-meta">May 2010 - May 2011</div>
       <ul>
         <li>Developed and integrated enterprise software modules within F4B's plug-in architecture</li>
         <li>Mentored software engineers; established development standards</li>
@@ -519,26 +549,26 @@
 
     <div class="exp-block">
       <div class="exp-role">Software Development Engineer</div>
-      <div class="exp-role-meta">Jul 2008 – May 2010</div>
+      <div class="exp-role-meta">Jul 2008 - May 2010</div>
       <ul>
         <li>Built line-of-business software modules on the Microsoft stack (C#, .NET, SQL Server)</li>
       </ul>
     </div>
 
-    <hr class="rule-hair" style="margin: 24px 0;">
+    <hr class="rule-hair" style="margin: 14px 0;">
 
     <div class="exp-company">Independent Engineering &amp; Entrepreneurship</div>
-    <div class="exp-meta">1996 – 2008 · Concurrent with studies · Croatia</div>
-    <p class="exp-role-intro" style="margin-top: 8px;">Before professional employment, built and operated production systems for real customers — driven by curiosity, research, and a bias toward shipping.</p>
+    <div class="exp-meta">1996 - 2008 · Concurrent with studies · Croatia</div>
+    <p class="exp-role-intro" style="margin-top: 8px;">Before professional employment, built and operated production systems for real customers - driven by curiosity, research, and a bias toward shipping.</p>
     <ul>
-      <li><strong>Social network for cultural events (2001–2007):</strong> Self-hosted community with thousands of active members on Apache/PHP/MySQL — years before mainstream social networks. Full stack ownership</li>
-      <li><strong>E-commerce platform for professional audio (2003–2006):</strong> Online store with inventory, multi-store ordering, and PostgreSQL-backed ERP-like workflows</li>
-      <li><strong>Tourism sector web platforms (2002–2004):</strong> Booking systems, content management, early e-commerce patterns</li>
-      <li><strong>Network administration (1999–2002):</strong> Internet cafe networks — routing, security, uptime</li>
-      <li><strong>Early Linux adoption (1997–1999):</strong> Mandrake, SuSE, RedHat; first PHP/MySQL apps on self-maintained servers</li>
-      <li><strong>First software products (1996–1999):</strong> Visual Basic products; first code in BASIC at age 10 (1994)</li>
+      <li><strong>Social network for cultural events (2001-2007):</strong> Self-hosted community with thousands of active members on Apache/PHP/MySQL - years before mainstream social networks. Full stack ownership</li>
+      <li><strong>E-commerce platform for professional audio (2003-2006):</strong> Online store with inventory, multi-store ordering, and PostgreSQL-backed ERP-like workflows</li>
+      <li><strong>Tourism sector web platforms (2002-2004):</strong> Booking systems, content management, early e-commerce patterns</li>
+      <li><strong>Network administration (1999-2002):</strong> Internet cafe networks - routing, security, uptime</li>
+      <li><strong>Early Linux adoption (1997-1999):</strong> Mandrake, SuSE, RedHat; first PHP/MySQL apps on self-maintained servers</li>
+      <li><strong>First software products (1996-1999):</strong> Visual Basic products; first code in BASIC at age 10 (1994)</li>
     </ul>
-    <p class="exp-context" style="margin-top: 14px; margin-bottom: 0;">This early trajectory — building production systems, serving real users, and operating infrastructure under real constraints — established the same instincts that later drove decisions like pioneering GPT-3 integration, investing in Delta Tables before others, and piloting Spark-on-Kubernetes at Microsoft.</p>
+    <p class="exp-context" style="margin-top: 14px; margin-bottom: 0;">This early trajectory - building production systems, serving real users, and operating infrastructure under real constraints - established the same instincts that later drove decisions like pioneering GPT-3 integration, investing in Delta Tables before others, and piloting Spark-on-Kubernetes at Microsoft.</p>
 
   </div>
 </div>
