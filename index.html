@@ -65,7 +65,7 @@
   }
   .row-tight { padding: 16px 0; }
   .row-full { padding: 20px 0; }
-  .label { padding-top: 2px; position: sticky; top: 20px; align-self: start; }
+  .label { padding-top: 2px; position: sticky; top: 20px; align-self: start; z-index: 10; }
 
   .header { padding: 0 0 16px 0; }
   .header-meta { font-size: 0.8rem; color: var(--mid); margin-top: 4px; letter-spacing: 0.01em; }
@@ -143,12 +143,11 @@
 
     /* Only protect small atomic blocks from splitting mid-way */
     blockquote { break-inside: avoid; }
-    .exp-block { break-inside: avoid; }
 
     /* Keep headings with their content */
-    .t-sub { break-after: avoid; }
     .exp-role { break-after: avoid; }
-    .exp-company { break-after: avoid; }
+    .exp-role-meta { break-after: avoid; }
+    .exp-role-intro { break-after: avoid; }
 
     p { orphans: 2; widows: 2; }
   }
@@ -156,7 +155,7 @@
   @media (max-width: 720px) {
     :root { --col-label: 0px; --col-gap: 0px; --page-pad: 24px; }
     .row { grid-template-columns: 1fr; }
-    .label { margin-bottom: 8px; }
+    .label { margin-bottom: 0; background: var(--bg); padding: 12px 0 10px; top: 0; width: 100%; }
     .metrics { grid-template-columns: repeat(2, 1fr); }
     .quotes { grid-template-columns: 1fr; }
     .skills { grid-template-columns: 1fr; }
